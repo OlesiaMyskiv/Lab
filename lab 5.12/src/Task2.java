@@ -1,23 +1,32 @@
-import java.util.Arrays;
 import java.util.Random;
-
 public class Task2 {
     public static void main(String[] args) {
-        int[] array = new int[20];  // Створення масиву розміром 20
+        int size = 20; // розмір масиву
+        int[] array = new int[size]; // створюємо масив
 
-        Random random = new Random();  // Створення об'єкту для генерації випадкових чисел
-
-        for (int i = 0; i < array.length; i++) {  // Заповнення масиву випадковими числами від 0 до 9
-            array[i] = random.nextInt(10);
+        // заповнюємо масив випадковими числами
+        Random random = new Random();
+        for (int i = 0; i < size; i++) {
+            array[i] = random.nextInt(10); // повертає наступне випадкове значення
         }
 
-        System.out.println("Початковий масив: " + Arrays.toString(array));  // Виведення початкового масиву у консоль
+        // виведимо початковий масив у консоль
+        System.out.println("Початковий масив:");
+        for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
 
-        for (int i = 1; i < array.length; i += 2) {  // Заміна елементів з непарними індексами на нуль
+        // заміна елементів з непарним індексом на нуль
+        for (int i = 1; i < size; i += 2) {
             array[i] = 0;
         }
 
-        System.out.println("Оновлений масив: " + Arrays.toString(array));  // Виведення оновленого масиву у консоль
+        // виводимо оновлений масиву у консоль
+        System.out.println("Оновлений масив:");
+        for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
     }
 }
-

@@ -1,46 +1,59 @@
-import java.util.Arrays;
 import java.util.Random;
 
 public class Task3 {
     public static void main(String[] args) {
-        int[] array1 = new int[5];  // Створення першого масиву розміром 5
-        int[] array2 = new int[5];  // Створення другого масиву розміром 5
-        int[] array3 = new int[5];  // Створення третього масиву розміром 5
-        Random random = new Random();  // Створення об'єкту для генерації випадкових чисел
+        int size = 5; // масиву
+        int[] array1 = new int[size]; // перший масив
+        int[] array2 = new int[size]; // другий масив
+        int[] array3 = new int[size]; // третій масив
 
-        // Заповнення масивів випадковими числами від 0 до 5
-        for (int i = 0; i < array1.length; i++) {
+        // заповнюємо масиви випадковими числами
+        Random random = new Random();
+        for (int i = 0; i < size; i++) { // випадкові числа від 0 до 5
             array1[i] = random.nextInt(6);
             array2[i] = random.nextInt(6);
             array3[i] = random.nextInt(6);
         }
 
-        System.out.println("Перший масив: " + Arrays.toString(array1));  // Виведення першого масиву у консоль
-        System.out.println("Другий масив: " + Arrays.toString(array2));  // Виведення другого масиву у консоль
-        System.out.println("Третій масив: " + Arrays.toString(array3));  // Виведення третього масиву у консоль
+        // виведемо масиви у консоль
+        System.out.println("Масив 1:");
+        printArray(array1);
+        System.out.println("Масив 2:");
+        printArray(array2);
+        System.out.println("Масив 3:");
+        printArray(array3);
 
-        double average1 = calculateAverage(array1);  // Обчислення середнього значення першого масиву
-        double average2 = calculateAverage(array2);  // Обчислення середнього значення другого масиву
-        double average3 = calculateAverage(array3);  // Обчислення середнього значення третього масиву
+        // обчислюємо середнє арифметичне кожного масиву
+        double average1 = calculateAverage(array1);
+        double average2 = calculateAverage(array2);
+        double average3 = calculateAverage(array3);
 
-        // Порівняння середніх значень масивів та виведення відповідного повідомлення
+        // порівнюємо середні значеня масивів і виведимо повідомлення
         if (average1 > average2 && average1 > average3) {
-            System.out.println("Середнє значення першого масиву більше за інші.");
+            System.out.println("Середнє значення масиву 1 є більшим");
         } else if (average2 > average1 && average2 > average3) {
-            System.out.println("Середнє значення другого масиву більше за інші.");
+            System.out.println("Середнє значення масиву 2 є більшим");
         } else if (average3 > average1 && average3 > average2) {
-            System.out.println("Середнє значення третього масиву більше за інші.");
+            System.out.println("Середнє значення масиву 3 є більшим");
         } else {
-            System.out.println("Середні значення масивів рівні.");
+            System.out.println("Середні значення масивів рівні");
         }
     }
 
-    // Метод для обчислення середнього арифметичного значення масиву
-    private static double calculateAverage(int[] array) {
-        int sum = 0;
-        for (int i = 0; i < array.length ; i++) {
-            sum += array[i]; // Підрахунок суми елементів масиву
+    // метод для виведення масиву у консоль
+    public static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
-        return (double) sum / array.length; // Обчислення середнього арифметичного значення та його повернення
+        System.out.println();
+    }
+
+    // метод для обчислення середнього арифметичного масиву
+    public static double calculateAverage(int[] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        return (double) sum / array.length;
     }
 }
